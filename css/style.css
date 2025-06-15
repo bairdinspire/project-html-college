@@ -143,11 +143,13 @@ a {
 .button {
   padding: 0.5rem 1.5rem;
 }
+
 .button--primary {
   background-color: var(--color-primary);
   color: var(--color-text-light);
   border: 1px solid var(--color-primary);
 }
+
 .button--secondary {
   background-color: transparent;
   color: var(--color-text-light);
@@ -162,18 +164,21 @@ a {
   padding: var(--space-lg) 0;
   z-index: 99;
 }
+
 .header__inner {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
+
 .header__nav-list {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: var(--space-lg);
 }
+
 .header__nav-link {
   position: relative;
   display: inline-block;
@@ -181,6 +186,7 @@ a {
   text-decoration: none;
   transition: color 0.3s ease;
 }
+
 .header__nav-link::after {
   content: "";
   position: absolute;
@@ -192,14 +198,17 @@ a {
   transition: width 0.3s ease, left 0.3s ease;
   transform: translateX(-50%);
 }
+
 .header__nav-link:hover::after,
 .header__nav-link:focus::after {
   width: 100%;
   left: 50%;
 }
+
 .header__nav-link[aria-current="page"] {
   color: var(--color-primary);
 }
+
 .header__nav-link[aria-current="page"]:after {
   content: "";
   position: absolute;
@@ -230,6 +239,7 @@ a {
   z-index: 1000;
   transition: left 0.3s ease, top 0.3s ease;
 }
+
 .skip-link:focus {
   position: fixed;
   left: 1rem;
@@ -256,6 +266,7 @@ a {
   padding-bottom: 15rem;
   min-height: 400px;
 }
+
 .hero::before {
   content: "";
   position: absolute;
@@ -263,10 +274,12 @@ a {
   background-color: rgba(var(--color-secondary-rgb), 0.75);
   z-index: 0;
 }
-.hero > * {
+
+.hero>* {
   position: relative;
   z-index: 1;
 }
+
 .hero__title {
   max-width: 50rem;
   margin: 0 auto 1rem auto;
@@ -275,6 +288,7 @@ a {
   color: var(--color-text-light);
   text-align: center;
 }
+
 .hero__description {
   max-width: 45rem;
   margin: auto;
@@ -282,6 +296,7 @@ a {
   color: var(--color-text-light);
   text-align: center;
 }
+
 .hero__actions {
   width: 100%;
   display: flex;
@@ -295,22 +310,25 @@ a {
 /* COURSES */
 .courses {
   padding-top: var(--section-padding);
-  padding-bottom: var(--section-padding);
 }
+
 .courses__title {
   font-size: 2.5rem;
-  color: var(--color-heading); 
+  color: var(--color-heading);
   text-align: center;
 }
+
 .courses__description {
   text-align: center;
 }
+
 .courses__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-xl);
-  margin: var(--space-xl) 0;
+  margin-top: var(--space-xl);
 }
+
 .courses__card {
   background-color: var(--color-card-bg);
   border-radius: 0.5rem;
@@ -323,15 +341,123 @@ a {
   border: 1px solid var(--color-border);
   transition: box-shadow 0.3s ease-in-out;
 }
+
 .courses__card:hover {
   box-shadow: 0 0 20px var(--color-muted);
 }
+
 .courses__card-title {
   color: var(--color-heading);
   text-align: center;
 }
+
 .courses__card-description {
   text-align: center;
   text-wrap: balance;
 }
 
+/* Campus */
+.campus {
+  padding-top: var(--section-padding);
+}
+.campus__title {
+  font-size: 2.5rem;
+  color: var(--color-heading);
+  text-align: center;
+}
+.campus__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+}
+.campus__card {
+  position: relative;
+  height: 500px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  cursor: pointer;
+  /* Accessibility improvements */
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Focus styles for keyboard navigation */
+.campus__card:focus {
+  box-shadow: 0 0 0 3px var(--color-primary, #007bff);
+  outline: 2px solid transparent; /* For high contrast mode */
+}
+
+/* Ensure focus styles work on hover too */
+.campus__card:focus::before,
+.campus__card:hover::before {
+  opacity: 0.85;
+}
+
+.campus__card:focus .campus__card-title,
+.campus__card:hover .campus__card-title {
+  transform: translateY(0%);
+  opacity: 1;
+}
+
+.campus__card:focus .campus__card-image,
+.campus__card:hover .campus__card-image {
+  transform: scale(1.05);
+}
+
+.campus__card-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+  z-index: 0;
+}
+
+.campus__card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-primary);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 1;
+}
+
+.campus__card-title {
+  position: absolute;
+  bottom: 50%;
+  transform: translateY(150%);
+  color: var(--color-text-light);
+  font-size: 2rem;
+  margin: 0;
+  z-index: 2;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  opacity: 0;
+  text-align: center;
+  width: 100%;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .campus__card,
+  .campus__card-image,
+  .campus__card-title,
+  .campus__card::before {
+    transition: none;
+  }
+}
+
+/* FACILITES */
+.facilities {
+  padding-top: var(--section-padding);
+}
+
+.facilities__title {
+  font-size: 2.5rem;
+  color: var(--color-heading);
+  text-align: center;
+}
